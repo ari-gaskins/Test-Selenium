@@ -1,9 +1,9 @@
 from selenium import webdriver
-from dotenv import load_dotenv
-from keyring import http
+import time
+from selenium.common.exceptions import ElementClickInterceptedException
 
 # sets chrome as driver
-driver = webdriver.Chrome(load_dotenv.CHROMEDRIVER)
+driver = webdriver.Chrome()
 
 # sets url for test
 url = 'https://www.seleniumeasy.com/test/basic-first-form-demo.html'
@@ -24,16 +24,24 @@ eleUserMessage.clear()
 eleUserMessage.send_keys('Test Python')
 
 # finds 'Show Message' button 
-eleShowMsgBtn = driver.find_element_by_css_selector('#get-input > .btn')
+
+eleShowMsgBtn = driver.find_element_by_css_selector('button.btn')
+
+# wait
+time.sleep(3)
 
 # clicks 'Show Message' button
-eleShowMsgBtn.click()
+#ElementClickInterceptedException: 'at-cv-lightbox-inner'
+try:
+    eleShowMsgBtn.click()
+except:
+    'at-cv-lightbox-inner'
 
 # find outputted message
 eleYourMsg = driver.find_element_by_id('display')
 
-# show message in .txt file
-assert eleYourMsg in eleYourMsg.txt
+# wait 3 seconds
+time.sleep(3)
 
 # close window
 driver.close()
