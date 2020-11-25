@@ -1,0 +1,1 @@
+Running selenium test in order to learn how to use selenium. Goes to selenium site and performs the test provided by the site.
